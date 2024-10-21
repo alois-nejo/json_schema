@@ -1,461 +1,461 @@
 {
-  "$schema": "http://json-schema.org/draft-07/schema#",
-  "title": "Job Posting Schema",
-  "description": "Structured data representing information extracted from job postings, including text, markdown, or JSON formats.",
-  "type": "object",
-  "properties": {
-    "job_ad_id": {
-      "title": "Job Ad ID",
-      "type": ["string", "null"],
-      "default": None,
-      "description": "Unique identifier for the job posting from the input data. Set null if not specified."
-    },
-    "job_title": {
-      "title": "Job Title",
-      "type": "string",
-      "description": "The title or name of the job position being advertised (e.g., 'Software Engineer', 'Project Manager')."
-    },
-    "source_url": {
-      "title": "Source URL",
-      "type": "string",
-      "format": "uri",
-      "description": "The URL where the job posting was originally published."
-    },
-    "content_language": {
-      "title": "Content Language",
-      "type": "array",
-      "description": "The primary languages of the job posting, represented by a two-letter ISO language code (e.g., 'en' for English, 'de' for German).",
-      "items": { "type": "string" },
-      "examples": [
-        "de",
-        "en"
-      ]
-    },
-    "is_informal_text": {
-      "title": "Informal Text",
-      "type": "boolean",
-      "description": "Indicates if the job posting is written in an informal tone (e.g. using 'du' or 'Du' in German)",
-      "default": "FALSE"
-    },
-    "employment_type": {
-      "title": "Employment Type",
-      "description": "Specifies the type of employment in terms of working hours per week.",
-      "type": "array",
-      "items": {
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "title": "Job Posting Schema",
+    "description": "Structured data representing information extracted from job postings, including text, markdown, or JSON formats.",
+    "type": "object",
+    "properties": {
+      "job_ad_id": {
+        "title": "Job Ad ID",
+        "type": ["string", "null"],
+        "default": null,
+        "description": "Unique identifier for the job posting from the input data. Set null if not specified."
+      },
+      "job_title": {
+        "title": "Job Title",
         "type": "string",
-        "enum": ["Full-time", "Part-time", "Mini Job"]
+        "description": "The title or name of the job position being advertised (e.g., 'Software Engineer', 'Project Manager')."
       },
-      "minItems": 1,
-      "uniqueItems": True,
-      "default": ["Full-time"]
-    },
-    "contract_type": {
-      "title": "Contract Type",
-      "type": "string",
-      "description": "Specifies the type of employment contract.",
-      "enum": ["Employment", "Internship", "Work student", "Freelance", "Contractor"],
-      "default": "Employment"
-    },
-    "start_date": {
-      "title": "Start Date",
-      "description": "The expected or exact start date for the position, which could be 'immediately' or a specific date.",
-      "oneOf": [
-        { "type": "null" },
-        { "type": "string" }
-      ],
-      "default": None
-    },
-    "application_deadline": {
-      "title": "Application Deadline",
-      "description": "The final date for submitting applications.",
-      "oneOf": [
-        { "type": "null" },
-        { "type": "string" }
-      ],
-      "default": None
-    },
-    "travel_requirement_specified": {
-      "title": "Travel Requirement Specified",
-      "description": "Indicates if traveling is required for the job.",
-      "type": "boolean",
-      "default": "FALSE"
-
-    },
-    "travel_requirement_frequency": {
-      "title": "Travel Requirement Frequency",
-      "description": "The percentage of time that travel is required for the job.",
-      "type": ["number", "null"],
-      "default": None,
-      "examples": [
-        None,
-        "30",
-        "70"
-      ]
-    },
-    "career_level": {
-      "title": "Career Level",
-      "type": "string",
-      "description": "The experience or seniority level expected for the role.",
-      "enum": ["Entry-level", "Career Changer", "Experienced", "Senior", "Management"]
-    },
-    "company_name": {
-      "title": "Company Name",
-      "type": "string",
-      "description": "The name of the company offering the job."
-    },
-    "industry": {
-      "title": "Industry",
-      "type": "string",
-      "description": "The primary industry sector of the company.",
-      "default": "Other",
-      "enum": 
-        [
-          "Construction",
-          "Education",
-          "Administration",
-          "Procurement",
-          "EnergyAutomation",
-          "FinancialServices",
-          "Accounting",
-          "Healthcare",
-          "Design",
-          "RealEstate",
-          "IT",
-          "Logistics",
-          "Agriculture",
-          "Management",
-          "Marketing",
-          "Engineering",
-          "Science",
-          "HR",
-          "Manufacturing",
-          "Legal",
-          "Cleaning",
-          "Security",
-          "Hospitality",
-          "Sales",
-          "Wellness",
-          "Research",
-          "Automotive",
-          "Retail",
-          "Telecommunications",
-          "Transportation",
-          "Media",
-          "Consulting",
-          "Food",
-          "Pharmaceuticals",
-          "Fashion",
-          "Insurance",
-          "Entertainment",
-          "PublicRelations",
-          "Architecture",
-          "Government",
-          "Aerospace",
-          "Mining",
-          "NonProfit",
-          "Tourism",
-          "Other"
+      "source_url": {
+        "title": "Source URL",
+        "type": "string",
+        "format": "uri",
+        "description": "The URL where the job posting was originally published."
+      },
+      "content_language": {
+        "title": "Content Language",
+        "type": "array",
+        "description": "The primary languages of the job posting, represented by a two-letter ISO language code (e.g., 'en' for English, 'de' for German).",
+        "items": { "type": "string" },
+        "examples": [
+          "de",
+          "en"
         ]
-    },
-    "company_size": {
-      "title": "Company Size",
-      "description": "The size of the company based on the number of employees.",
-      "type": ["string", "null"],
-      "default": None,
-      "enum": [None, "1-10", "11-50", "51-200", "201-500", "501-1000", "1001+"]
-    },
-    "min_salary": {
-      "title": "Minimum Salary",
-      "description": "The minimum salary offered for the job, if specified.",
-      "type": ["number", "null"],
-      "default": None
-    },
-    "max_salary": {
-      "title": "Maximum Salary",
-      "description": "The maximum salary offered for the job, if specified.",
-      "type": ["number", "null"],
-      "default": None
-    },
-    "salary_frequency": {
-      "title": "Salary Frequency",
-      "description": "The frequency at which the salary is paid.",
-      "enum": [None, "One-Time", "Hourly", "Daily", "Weekly", "Monthly", "Yearly"],
-      "type": ["string", "null"],
-      "default": None
-    },
-    "working_time": {
-      "title": "Working Hours",
-      "description": "The expected daily start and end times for work.",
-      "type": ["string", "null"],
-      "default": None
-    },
-    "working_model": {
-      "title": "Working Model",
-      "description": "The working hours model, specifying whether the role offers flexible or fixed hours.",
-      "enum": [None, "Flexible", "Flextime", "Fixed hours"],
-      "type": ["string", "null"],
-      "default": None
-    },
-    "location": {
-      "title": "Location",
-      "description": "The name of the job location (e.g., name of a building, area, or landmark).",
-      "type": ["string", "null"],
-      "default": None
-    },
-    "location_street_and_number": {
-      "title": "Street and Number",
-      "description": "The street name and number of the job location.",
-      "type": ["string", "null"],
-      "default": None
-    },
-    "location_postcode": {
-      "title": "Postcode",
-      "description": "The postal code for the job location.",
-      "type": ["string", "null"],
-      "default": None
-    },
-    "location_city": {
-      "title": "City",
-      "description": "The city where the job is located.",
-      "type": ["string", "null"],
-      "default": None
-    },
-    "location_country": {
-      "title": "Country",
-      "description": "The name of the country where the job is located. Do not use any kind of abbrevation, like an ISO-Code.",
-      "type": ["string", "null"],
-      "default": None
-    },
-    "location_longitude": {
-      "title": "Longitude",
-      "description": "The geographic longitude of the job location.",
-      "type": ["number", "null"],
-      "default": None
-    },
-    "location_latitude": {
-      "title": "Latitude",
-      "description": "The geographic latitude of the job location.",
-      "type": ["number", "null"],
-      "default": None
-    },
-    "working_hours_per_week": {
-      "title": "Working Hours Per Week",
-      "description": "The total number of hours expected to be worked per week.",
-      "type": ["number", "null"],
-      "default": None
-    },
-    "work_location_type": {
-      "title": "Work Location Type",
-      "description": "Specifies whether the job is onsite, remote, or a hybrid of both.",
-      "enum": ["Onsite", "Hybrid", "Remote"],
-      "type": ["string", "null"],
-      "default": "Onsite"
-    },
-    "remote_work_share": {
-      "title": "Remote Work Share",
-      "description": "The percentage of work that can be done remotely or in home office.",
-      "type": ["number", "null"],
-      "default": None
-    },
-    "education_requirement": {
-      "title": "Education Requirement",
-      "description": "The minimum level of education required for the job.",
-      "type": ["string", "null"],
-      "default": None,
-      "enum":
-        [
-            None,
-            "Compulsory Education",
-            "High School Diploma",
-            "Bachelor's Degree",
-            "Master's Degree",
-            "Doctoral Degree (Ph.D.)",
-            "Vocational or Technical Certification"
+      },
+      "is_informal_text": {
+        "title": "Informal Text",
+        "type": "boolean",
+        "description": "Indicates if the job posting is written in an informal tone (e.g. using 'du' or 'Du' in German)",
+        "default": "FALSE"
+      },
+      "employment_type": {
+        "title": "Employment Type",
+        "description": "Specifies the type of employment in terms of working hours per week.",
+        "type": "array",
+        "items": {
+          "type": "string",
+          "enum": ["Full-time", "Part-time", "Mini Job"]
+        },
+        "minItems": 1,
+        "uniqueItems": True,
+        "default": ["Full-time"]
+      },
+      "contract_type": {
+        "title": "Contract Type",
+        "type": "string",
+        "description": "Specifies the type of employment contract.",
+        "enum": ["Employment", "Internship", "Work student", "Freelance", "Contractor"],
+        "default": "Employment"
+      },
+      "start_date": {
+        "title": "Start Date",
+        "description": "The expected or exact start date for the position, which could be 'immediately' or a specific date.",
+        "oneOf": [
+          { "type": "null" },
+          { "type": "string" }
+        ],
+        "default": null
+      },
+      "application_deadline": {
+        "title": "Application Deadline",
+        "description": "The final date for submitting applications.",
+        "oneOf": [
+          { "type": "null" },
+          { "type": "string" }
+        ],
+        "default": null
+      },
+      "travel_requirement_specified": {
+        "title": "Travel Requirement Specified",
+        "description": "Indicates if traveling is required for the job.",
+        "type": "boolean",
+        "default": "FALSE"
+  
+      },
+      "travel_requirement_frequency": {
+        "title": "Travel Requirement Frequency",
+        "description": "The percentage of time that travel is required for the job.",
+        "type": ["number", "null"],
+        "default": null,
+        "examples": [
+          null,
+          "30",
+          "70"
         ]
-    },
-    "required_skills": {
-      "title": "Required Skills",
-      "description": "A list of essential generalized skills needed for the role, excluding tools, languages, or certifications.",
-      "type": "array", 
-      "items": { "type": "string" }
-    },
-    "tools_technologies": {
-      "title": "Tools and Technologies",
-      "type": "array",
-      "description": "A list of essential tools, frameworks, programming languages and technologies relevant to the job, written in general terms.",
-      "type": ["array", "null"],
-      "items": {"type": "string"},
-      "default": None
-    },
-    "certifications_licenses": {
-      "title": "Certifications and Licenses",
-      "description": "A list of generalized certificates and licenses and similar qualifications required for the job.",
-      "type": ["array", "null"],
-      "items": {"type": "string"},
-      "default": None
-    },
-    "language_skills": {
-      "title": "Language Skills",
-      "type": "object",
-      "description": "A key-value mapping of languages required for the job, including generalized proficiency levels (e.g. English: Business fluent, German: fluent, French: is a plus)",
-      "additionalProperties": {
-        "type": "string"
       },
-      "propertyNames": {
-        "type": "string"
+      "career_level": {
+        "title": "Career Level",
+        "type": "string",
+        "description": "The experience or seniority level expected for the role.",
+        "enum": ["Entry-level", "Career Changer", "Experienced", "Senior", "Management"]
       },
-    },
-    "years_of_experience": {
-      "title": "Years of Experience",
-      "type": "number",
-      "description": "The number of years of professional experience required for the job position.",
-      "default": -1
-    },
-    "job_summary": {
-      "title": "Job Responsibilities Summary",
-      "type": "string",
-      "maxLength": 200,
-      "description": "A 2-sentence summary of the main tasks and responsibilities of the job, written in the third person and limited to 150 characters."
-    },
-    "team_size": {
-      "title": "Team Size",
-      "description": "The size of the team the job andidate will be working with.",
-      "enum": [None, "1-10", "11-50", "51-200", "201-500", "501-1000", "1001+"],
-      "type": ["string", "null"],
-      "default": None
-    },
-    "benefits": {
-      "title": "Benefits",
-      "description": "A list of the job benefits provided, written in the third person and limited using genralised terms.",
-      "type": ["array", "null"],
-      "items": {
-        "type": "string"
+      "company_name": {
+        "title": "Company Name",
+        "type": "string",
+        "description": "The name of the company offering the job."
       },
-      "default": None
-    },
-    "office_desk_policy": {
-      "title": "Office Desk Policy",
-      "description": "A description of the office desk policy (e.g., 'shared desk office', 'private office').",
-      "type": ["string", "null"],
-      "default": None
-    },
-    "company_summary": {
-      "title": "Company Summary",
-      "maxLength": 200,
-      "description": "A 2-sentence summary of the company, its mission, and values, written in the third person and limited to 150 characters.",
-      "type": ["string", "null"],
-      "default": None
-    },
-    "company_culture": {
-      "title": "Company Culture",
-      "maxLength": 200,
-      "description": "A 2-sentence summary of the company's culture, written in the third person and limited to 150 characters.",
-      "type": ["string", "null"],
-      "default": None
-    },
-    "esg_initiatives": {
-      "title": "ESG Initiatives",
-      "maxLength": 200,
-      "description": "A 2-sentence summary of the company's environmental, social and governance (ESG) initiatives, principles and focus, written in the third person using generalised terms and limited to 150 characters.",
-      "type": ["string", "null"],
-      "default": None
-    },
-    "diversity_policy": {
-      "title": "Diversity Policy",
-      "maxLength": 200,
-      "description": "A 2-sentence summary of the company's diversity and inclusion principles, initiatives and focus, written in the third person using generalised terms and limited to 150 characters.",
-      "type": ["string", "null"],
-      "default": None
-    },
-    "application_process": {
-      "title": "Application Process",
-      "description": "A list of the steps of the applciation involved in the job application process after applying for the job, written in the third person using generalised terms.",
-      "type": ["array", "null"],
-      "items": {
-        "type": "string"
+      "industry": {
+        "title": "Industry",
+        "type": "string",
+        "description": "The primary industry sector of the company.",
+        "default": "Other",
+        "enum": 
+          [
+            "Construction",
+            "Education",
+            "Administration",
+            "Procurement",
+            "EnergyAutomation",
+            "FinancialServices",
+            "Accounting",
+            "Healthcare",
+            "Design",
+            "RealEstate",
+            "IT",
+            "Logistics",
+            "Agriculture",
+            "Management",
+            "Marketing",
+            "Engineering",
+            "Science",
+            "HR",
+            "Manufacturing",
+            "Legal",
+            "Cleaning",
+            "Security",
+            "Hospitality",
+            "Sales",
+            "Wellness",
+            "Research",
+            "Automotive",
+            "Retail",
+            "Telecommunications",
+            "Transportation",
+            "Media",
+            "Consulting",
+            "Food",
+            "Pharmaceuticals",
+            "Fashion",
+            "Insurance",
+            "Entertainment",
+            "PublicRelations",
+            "Architecture",
+            "Government",
+            "Aerospace",
+            "Mining",
+            "NonProfit",
+            "Tourism",
+            "Other"
+          ]
       },
-      "default": None
+      "company_size": {
+        "title": "Company Size",
+        "description": "The size of the company based on the number of employees.",
+        "type": ["string", "null"],
+        "default": null,
+        "enum": [null, "1-10", "11-50", "51-200", "201-500", "501-1000", "1001+"]
+      },
+      "min_salary": {
+        "title": "Minimum Salary",
+        "description": "The minimum salary offered for the job, if specified.",
+        "type": ["number", "null"],
+        "default": null
+      },
+      "max_salary": {
+        "title": "Maximum Salary",
+        "description": "The maximum salary offered for the job, if specified.",
+        "type": ["number", "null"],
+        "default": null
+      },
+      "salary_frequency": {
+        "title": "Salary Frequency",
+        "description": "The frequency at which the salary is paid.",
+        "enum": [null, "One-Time", "Hourly", "Daily", "Weekly", "Monthly", "Yearly"],
+        "type": ["string", "null"],
+        "default": null
+      },
+      "working_time": {
+        "title": "Working Hours",
+        "description": "The expected daily start and end times for work.",
+        "type": ["string", "null"],
+        "default": null
+      },
+      "working_model": {
+        "title": "Working Model",
+        "description": "The working hours model, specifying whether the role offers flexible or fixed hours.",
+        "enum": [null, "Flexible", "Flextime", "Fixed hours"],
+        "type": ["string", "null"],
+        "default": null
+      },
+      "location": {
+        "title": "Location",
+        "description": "The name of the job location (e.g., name of a building, area, or landmark).",
+        "type": ["string", "null"],
+        "default": null
+      },
+      "location_street_and_number": {
+        "title": "Street and Number",
+        "description": "The street name and number of the job location.",
+        "type": ["string", "null"],
+        "default": null
+      },
+      "location_postcode": {
+        "title": "Postcode",
+        "description": "The postal code for the job location.",
+        "type": ["string", "null"],
+        "default": null
+      },
+      "location_city": {
+        "title": "City",
+        "description": "The city where the job is located.",
+        "type": ["string", "null"],
+        "default": null
+      },
+      "location_country": {
+        "title": "Country",
+        "description": "The name of the country where the job is located. Do not use any kind of abbrevation, like an ISO-Code.",
+        "type": ["string", "null"],
+        "default": null
+      },
+      "location_longitude": {
+        "title": "Longitude",
+        "description": "The geographic longitude of the job location.",
+        "type": ["number", "null"],
+        "default": null
+      },
+      "location_latitude": {
+        "title": "Latitude",
+        "description": "The geographic latitude of the job location.",
+        "type": ["number", "null"],
+        "default": null
+      },
+      "working_hours_per_week": {
+        "title": "Working Hours Per Week",
+        "description": "The total number of hours expected to be worked per week.",
+        "type": ["number", "null"],
+        "default": null
+      },
+      "work_location_type": {
+        "title": "Work Location Type",
+        "description": "Specifies whether the job is onsite, remote, or a hybrid of both.",
+        "enum": ["Onsite", "Hybrid", "Remote"],
+        "type": ["string", "null"],
+        "default": "Onsite"
+      },
+      "remote_work_share": {
+        "title": "Remote Work Share",
+        "description": "The percentage of work that can be done remotely or in home office.",
+        "type": ["number", "null"],
+        "default": null
+      },
+      "education_requirement": {
+        "title": "Education Requirement",
+        "description": "The minimum level of education required for the job.",
+        "type": ["string", "null"],
+        "default": null,
+        "enum":
+          [
+              null,
+              "Compulsory Education",
+              "High School Diploma",
+              "Bachelor's Degree",
+              "Master's Degree",
+              "Doctoral Degree (Ph.D.)",
+              "Vocational or Technical Certification"
+          ]
+      },
+      "required_skills": {
+        "title": "Required Skills",
+        "description": "A list of essential generalized skills needed for the role, excluding tools, languages, or certifications.",
+        "type": "array", 
+        "items": { "type": "string" }
+      },
+      "tools_technologies": {
+        "title": "Tools and Technologies",
+        "type": "array",
+        "description": "A list of essential tools, frameworks, programming languages and technologies relevant to the job, written in general terms.",
+        "type": ["array", "null"],
+        "items": {"type": "string"},
+        "default": null
+      },
+      "certifications_licenses": {
+        "title": "Certifications and Licenses",
+        "description": "A list of generalized certificates and licenses and similar qualifications required for the job.",
+        "type": ["array", "null"],
+        "items": {"type": "string"},
+        "default": null
+      },
+      "language_skills": {
+        "title": "Language Skills",
+        "type": "object",
+        "description": "A key-value mapping of languages required for the job, including generalized proficiency levels (e.g. English: Business fluent, German: fluent, French: is a plus)",
+        "additionalProperties": {
+          "type": "string"
+        },
+        "propertyNames": {
+          "type": "string"
+        },
+      },
+      "years_of_experience": {
+        "title": "Years of Experience",
+        "type": "number",
+        "description": "The number of years of professional experience required for the job position.",
+        "default": -1
+      },
+      "job_summary": {
+        "title": "Job Responsibilities Summary",
+        "type": "string",
+        "maxLength": 200,
+        "description": "A 2-sentence summary of the main tasks and responsibilities of the job, written in the third person and limited to 150 characters."
+      },
+      "team_size": {
+        "title": "Team Size",
+        "description": "The size of the team the job andidate will be working with.",
+        "enum": [null, "1-10", "11-50", "51-200", "201-500", "501-1000", "1001+"],
+        "type": ["string", "null"],
+        "default": null
+      },
+      "benefits": {
+        "title": "Benefits",
+        "description": "A list of the job benefits provided, written in the third person and limited using genralised terms.",
+        "type": ["array", "null"],
+        "items": {
+          "type": "string"
+        },
+        "default": null
+      },
+      "office_desk_policy": {
+        "title": "Office Desk Policy",
+        "description": "A description of the office desk policy (e.g., 'shared desk office', 'private office').",
+        "type": ["string", "null"],
+        "default": null
+      },
+      "company_summary": {
+        "title": "Company Summary",
+        "maxLength": 200,
+        "description": "A 2-sentence summary of the company, its mission, and values, written in the third person and limited to 150 characters.",
+        "type": ["string", "null"],
+        "default": null
+      },
+      "company_culture": {
+        "title": "Company Culture",
+        "maxLength": 200,
+        "description": "A 2-sentence summary of the company's culture, written in the third person and limited to 150 characters.",
+        "type": ["string", "null"],
+        "default": null
+      },
+      "esg_initiatives": {
+        "title": "ESG Initiatives",
+        "maxLength": 200,
+        "description": "A 2-sentence summary of the company's environmental, social and governance (ESG) initiatives, principles and focus, written in the third person using generalised terms and limited to 150 characters.",
+        "type": ["string", "null"],
+        "default": null
+      },
+      "diversity_policy": {
+        "title": "Diversity Policy",
+        "maxLength": 200,
+        "description": "A 2-sentence summary of the company's diversity and inclusion principles, initiatives and focus, written in the third person using generalised terms and limited to 150 characters.",
+        "type": ["string", "null"],
+        "default": null
+      },
+      "application_process": {
+        "title": "Application Process",
+        "description": "A list of the steps of the applciation involved in the job application process after applying for the job, written in the third person using generalised terms.",
+        "type": ["array", "null"],
+        "items": {
+          "type": "string"
+        },
+        "default": null
+      },
+      "contact_person_name": {
+        "title": "Contact Person Name",
+        "description": "The name of the person responsible for handling job applications.",
+        "type": ["string", "null"],
+        "default": null
+      },
+      "contact_person_phone": {
+        "title": "Contact Person Phone",
+        "description": "The phone number for the job application contact person.",
+        "type": ["string", "null"],
+        "default": null
+      },
+      "contact_person_email": {
+        "title": "Contact Person Email",
+        "description": "The email address for the job application contact person.",
+        "oneOf": [
+          { "type": "null" },
+          { "type": "string", "format": "email" }
+        ],
+        "default": null
+      },
+      "company_website": {
+        "title": "Company Website",
+        "description": "The URL of the company's official website.",
+        "oneOf": [
+          { "type": "null" },
+          { "type": "string", "format": "uri" }
+        ],
+        "default": null
+      }
     },
-    "contact_person_name": {
-      "title": "Contact Person Name",
-      "description": "The name of the person responsible for handling job applications.",
-      "type": ["string", "null"],
-      "default": None
-    },
-    "contact_person_phone": {
-      "title": "Contact Person Phone",
-      "description": "The phone number for the job application contact person.",
-      "type": ["string", "null"],
-      "default": None
-    },
-    "contact_person_email": {
-      "title": "Contact Person Email",
-      "description": "The email address for the job application contact person.",
-      "oneOf": [
-        { "type": "null" },
-        { "type": "string", "format": "email" }
-      ],
-      "default": None
-    },
-    "company_website": {
-      "title": "Company Website",
-      "description": "The URL of the company's official website.",
-      "oneOf": [
-        { "type": "null" },
-        { "type": "string", "format": "uri" }
-      ],
-      "default": None
-    }
-  },
-  "required": [
-    "job_ad_id",
-    "job_title",
-    "source_url",
-    "content_language",
-    "is_informal_text",
-    "employment_type",
-    "contract_type",
-    "start_date",
-    "application_deadline",
-    "travel_requirement_specified",
-    "travel_requirement_frequency",
-    "career_level",
-    "company_name",
-    "industry",
-    "company_size",
-    "min_salary",
-    "max_salary",
-    "salary_frequency",
-    "working_time",
-    "working_model",
-    "location",
-    "location_street_and_number",
-    "location_postcode",
-    "location_city",
-    "location_country",
-    "location_longitude",
-    "location_latitude",
-    "working_hours_per_week",
-    "work_location_type",
-    "remote_work_share",
-    "education_requirement",
-    "required_skills",
-    "tools_technologies",
-    "certifications_licenses",
-    "language_skills",
-    "years_of_experience",
-    "job_summary",
-    "team_size",
-    "benefits",
-    "office_desk_policy",
-    "company_summary",
-    "company_culture",
-    "esg_initiatives",
-    "diversity_policy",
-    "application_process",
-    "contact_person_name",
-    "contact_person_phone",
-    "contact_person_email",
-    "company_website"
-  ]
-}
+    "required": [
+      "job_ad_id",
+      "job_title",
+      "source_url",
+      "content_language",
+      "is_informal_text",
+      "employment_type",
+      "contract_type",
+      "start_date",
+      "application_deadline",
+      "travel_requirement_specified",
+      "travel_requirement_frequency",
+      "career_level",
+      "company_name",
+      "industry",
+      "company_size",
+      "min_salary",
+      "max_salary",
+      "salary_frequency",
+      "working_time",
+      "working_model",
+      "location",
+      "location_street_and_number",
+      "location_postcode",
+      "location_city",
+      "location_country",
+      "location_longitude",
+      "location_latitude",
+      "working_hours_per_week",
+      "work_location_type",
+      "remote_work_share",
+      "education_requirement",
+      "required_skills",
+      "tools_technologies",
+      "certifications_licenses",
+      "language_skills",
+      "years_of_experience",
+      "job_summary",
+      "team_size",
+      "benefits",
+      "office_desk_policy",
+      "company_summary",
+      "company_culture",
+      "esg_initiatives",
+      "diversity_policy",
+      "application_process",
+      "contact_person_name",
+      "contact_person_phone",
+      "contact_person_email",
+      "company_website"
+    ]
+  }
